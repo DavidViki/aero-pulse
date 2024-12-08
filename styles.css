@@ -1,0 +1,371 @@
+/* General Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url("hero-bg.jpg") no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(34, 35, 35, 0.6),
+    rgba(3, 2, 2, 0.6),
+    rgba(33, 33, 33, 0.6)
+  );
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  z-index: 1;
+  animation: overlayGradientShift 20s ease infinite;
+}
+
+.hero-content {
+  z-index: 2;
+  color: #fff;
+  transform: translateY(10%);
+  animation: fade-in 2s ease-out forwards;
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00f2ff, #1e1e1e, #00f2ff);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientShift 20s ease infinite;
+}
+
+.hero-tagline {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  opacity: 0.8;
+  animation: fade-in 3s ease-in 1s forwards;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #00f2ff;
+  color: #000;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: glow 2s infinite alternate, pulse 1.5s infinite;
+}
+
+.cta-button:hover {
+  background-color: #00d1e3;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.8);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 0 auto;
+  background: #00f2ff;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Animations */
+@keyframes overlayGradientShift {
+  0% {
+    background-position: 200% 50%; /* Start off-screen */
+  }
+  50% {
+    background-position: -200% 50%; /* Move across to the other side */
+  }
+  100% {
+    background-position: -200% 50%; /* Go back to the starting position */
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 242, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 242, 255, 0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #00f2ff;
+  }
+  to {
+    box-shadow: 0 0 20px #00d1e3;
+  }
+}
+
+/* Models Section */
+.models {
+  padding: 50px 10%;
+  background-color: #1a1a1a;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.models::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("model-bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.models h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.model-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.model img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.model img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+model:hover h3 {
+  color: #00f2ff;
+}
+
+.model h3 {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.model p {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  transition: color 0.3s ease;
+}
+
+.model:hover p {
+  color: #00d1e3;
+}
+
+@media (max-width: 768px) {
+  .models {
+    padding: 30px 5%;
+  }
+
+  .models h2 {
+    font-size: 2rem;
+  }
+
+  .model img {
+    height: auto;
+  }
+}
+
+/* Contact Section */
+.contact {
+  padding: 50px 10%;
+  background-color: #121212;
+  text-align: center;
+}
+
+.contact form {
+  display: grid;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  width: 100%;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  background-color: #444;
+  border-color: #00f2ff;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.contact button {
+  padding: 15px;
+  background: linear-gradient(90deg, #00f2ff, #00d1e3);
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+.contact button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+.contact button:hover::after {
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+}
+
+.contact button:hover {
+  background: linear-gradient(90deg, #00d1e3, #00a9c9);
+  transform: translateY(-2px);
+}
+
+.contact button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 30px 5%;
+  }
+
+  .contact form {
+    gap: 15px;
+  }
+
+  .contact button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Footer */
+footer {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #1a1a1a;
+  color: #b0b0b0;
+}
